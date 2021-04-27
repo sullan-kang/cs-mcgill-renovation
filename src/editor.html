@@ -1,0 +1,181 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="editor.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+
+    <!-- JavaScript CODE -->
+
+    <script>
+        /* this loades the header */
+        $(function () {
+            $("#header").load("header.html");
+        });
+
+        /* resize iframe everytime source changes */
+        function resizeIframe(obj) {
+            var x = obj.contentWindow.document.getElementById("info").scrollHeight + 50;
+            obj.style.height = x + "px";
+        }
+
+        /* change src */
+        function changeContent(str) {
+            obj = document.getElementById("myframe");
+            obj.src = str;
+        }
+
+        /** TOP PART OF EDITOR **/
+
+        /* after questionnaire 1 - info or page.
+        shows the next questionnaire only and hides the rest (other questionnaire, buttons)*/
+        function typeChoice(obj) {
+            var selection = obj.value;
+            for (x of document.getElementsByClassName("hidden")) {
+                if (x.id == selection) x.style.display = "inline-block";
+                else x.style.display = "none";
+            }
+        }
+
+        /* after questionnaire 2. loads questionnaire 3*/
+        function loadList() {
+            $.ajax({
+                type: 'POST',
+                data: {
+                    'edit_type': document.getElementById("edit_type").value,
+                    'info_type': document.getElementById("info_type").value,
+                    'page_type': document.getElementById("page_type").value,
+                    'function': "loadList()"
+                },
+                url: 'editor.php',
+                success: function (data) {
+                    var x = document.getElementById("listLoaded");
+                    x.innerHTML = data;
+                    x.style.display = "inline-block";
+                },
+                error: function (xhr) {
+                    alert("error");
+                }
+            });
+        }
+
+        /* after questionnaire 3. shows load button and maybe delete(submit) */
+        function showLoad() {
+            document.getElementById("load").style.display = "inline-block";
+            if (parseInt(document.getElementById("item_chosen").value) < 0) {
+                document.getElementById("delete").style.display = "none";
+            } else document.getElementById("delete").style.display = "inline-block";
+        }
+
+        /* if load button is clicked, load editor*/
+        function loadEditor() {
+            $.ajax({
+                type: 'POST',
+                data: {
+                    'edit_type': document.getElementById("edit_type").value,
+                    'info_type': document.getElementById("info_type").value,
+                    'page_type': document.getElementById("page_type").value,
+                    'item_id': document.getElementById("item_chosen").value,
+                    'function': 'loadEditor()'
+                },
+                url: 'editor.php',
+                success: function (data) {
+                    var x = document.getElementById("editbox_inner");
+                    x.innerHTML = data;
+                },
+                error: function (xhr) {
+                    alert("error");
+                }
+            });
+        }
+
+        /* if delete buton is clicked(on "submit"), processes delete operation*/
+        function processDelete() {
+            var confirmation = confirm("delete the item?");
+            if (confirmation) {
+                document.getElementById("ItemChooseForm").submit();
+            }
+            return confirmation;
+        }
+
+        /** BOTTOM PART OF EDITOR **/
+        function processUpdate() { // for both insert and update
+            var confirmation = confirm("submit the form?");
+            if (confirmation) {
+                document.getElementsByTagName("form")[1].submit();
+            }
+            return confirmation;
+        }
+    </script>
+</head>
+
+<body>
+    <div id="header"></div>
+    <!--header-->
+    <br>
+
+    <div class="navigation" id="info">
+        <form id="ItemChooseForm" action="deleterecord.php" method="post" enctype="multipart/form-data">
+
+            <!-- dropdown on whether info or page -->
+            <div class="shown" id="shownfirst">
+                <label for="edit_type">What would you like to do?</label><br>
+                <select id="edit_type" name="edit_type" onchange="typeChoice(this)">
+                    <option selected disabled hidden></option>
+                    <option value="infos">Modify information about course or people</option>
+                    <option value="pages">Publish or modify news, events, or jobs</option>
+                </select><br>
+            </div>
+
+            <!-- if infos) dropdown on which info: Course/TA awards/People -->
+            <div class="hidden" id="infos">
+                <label for="info_type">Which information would you like to modify?</label><br>
+                <select id="info_type" name="info_type" onchange="loadList()">
+                    <option selected disabled hidden></option>
+                    <option value="course">Add, remove or modify course information</option>
+                    <option value="ta_awards">Add, remove or modify TA awards information</option>
+                    <option value="people">Add, remove or modify SOCS people information</option>
+                </select><br>
+            </div>
+
+            <!-- if pages) dropdown on which page: News/Events/Jobs -->
+            <div class="hidden" id="pages">
+                <label for="page_type">Which page would you like to modify?</label><br>
+                <select id="page_type" name="page_type" onchange="loadList()">
+                    <option selected disabled hidden></option>
+                    <option value="news">Publish, remove or modify news</option>
+                    <option value="events">Publish, remove or modify events</option>
+                    <option value="jobs">Publish, remove or modify job postings</option>
+                </select><br>
+            </div>
+
+            <!-- list of item loaded -->
+            <div class="hidden" id="listLoaded"></div>
+
+            <!-- hidden load button -->
+            <div class="hidden" id="load">
+                <input type="button" onclick="loadEditor()" value="Load"></input>
+            </div>
+
+            <!-- hidden delete button -->
+            <div class="hidden" id="delete">
+                <input type="button" onclick="processDelete()" value="Delete"></input>
+            </div>
+
+        </form>
+    </div>
+
+    <!----EDITBOX on the right--->
+    <div class="editbox" id="content">
+        <div class="editbox_inner" id="editbox_inner"></div>
+        <div id="result"></div>
+    </div>
+
+    <div class="foot">
+        <p style="margin: 0;">All content related requests should be sent to webadmin@cs.mcgill.ca</p>
+        <p>© McGill University 2020 Credits</p>
+    </div>
+
+</body>
+
+</html>

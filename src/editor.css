@@ -1,0 +1,44 @@
+.navigation {
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+}
+
+.editbox {
+    box-sizing: border-box;
+    margin-left: 5%;
+    margin-right: 5%;
+    background-color: #f9f9f9;
+    border: none;
+    min-height: 600px;
+}
+
+.editbox_inner {
+    padding: 3%;
+}
+
+.hidden {
+    display: none;
+    padding: 3%;
+}
+
+.shown {
+    display: inline-block;
+    padding: 3%;
+}
+
+.foot {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    background-color: rgb(54, 54, 54);
+    padding-top: 42px;
+    font-size: 16px;
+    height: 116px;
+    color: #f9f9f9;
+    text-align: right;
+    border-top: 2px rgb(224, 50, 50) solid;
+    padding-left: 20px;
+    padding-right: 20px;
+}
