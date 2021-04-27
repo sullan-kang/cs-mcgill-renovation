@@ -33,7 +33,7 @@
     }
 
     function loadEditor($table, $id){
-        $conn = mysqli_connect("localhost","cs307-group23","pyjHPQCUbdkBWFT4","cs307-group23-DB");
+        $conn = mysqli_connect("localhost","cs307-group23","","cs307-group23-DB");
         if(!$conn || $conn->connect_error)
         {
             die("Connection failed:" . $conn->connect_error);
