@@ -1,0 +1,114 @@
+<html>
+
+<head>
+
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <link rel="stylesheet" href="subpage.css">
+    <script>
+        $(function () {
+            $("#header").load("header.html");
+        });
+    </script>
+
+    <script>
+        function moveTo(str) {
+            location.replace(str)
+        }
+    </script>
+
+
+
+</head>
+
+<body>
+
+    <div id="header"></div>
+    <br>
+
+
+    <!----NAVIGATION BAR--->
+    <div class="navigation">
+
+        <div class="drop">
+            <button class="dropbtn">Undergraduate
+
+            </button>
+            <div class="drop-content">
+                <button class="content-btn" onclick="moveTo('undergradoverview.html')">Overview</button>
+                <button class="content-btn" onclick="moveTo('remotelearning.html')">Remote Learning</button>
+            </div>
+        </div>
+
+        <div class="drop">
+            <button class="dropbtn">Graduate
+
+            </button>
+            <div class="drop-content">
+                <button class="content-btn" onclick="moveTo('gradoverview.html')">Overview</button>
+                <button class="content-btn">Applying</button>
+            </div>
+        </div>
+
+        <div class="drop">
+            <button class="dropbtn">Courses
+
+            </button>
+            <div class="drop-content">
+                <button class="content-btn">Overview</button>
+                <button class="content-btn">Applying</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!----CONTENT--->
+
+    <div class="content" id="content">
+        <div class="heading">Overview</div>
+        <br>
+        <div class="paragraph">The McGill School of Computer Science offers Masters and Ph.D. programs.</div>
+        <br>
+        <div class="subheading">Which program should you apply to?</div>
+        <br>
+        <div class="paragraph">
+            If you are a McGill undergrad, then you can consider applying for the B.Sc. / M.Sc. fast track. More
+            information on this program can be found at our grad school preparation page, and the about the B.Sc. /
+            M.Sc. (thesis) track page of the Faculty of Science.<br><br>
+            If your final goal is to obtain a Masters then apply to the Masters program.<br><br>
+            If your final goal is (or may be) to obtain a Ph.D. then there are two possibilities.<br><br>
+            <ul>
+                <li>If you have already completed a Masters degree, you should apply directly to the Ph.D. program.</li>
+                <li>If you do not hold a Masters degree, you should apply to Masters program initially, although you
+                    have the possibility of being admitted to the Ph.D. program directly if you have excellent academic
+                    records. Furthermore, students who are already in the Masters program at the School of Computer
+                    Science and have shown sufficient scholastic and research abilities will have the possibility of
+                    being fast-tracked to the Ph.D. program at the end of the first academic year, without having to
+                    complete the requirements of the Masters degree.</li>
+            </ul>
+
+        </div><br>
+        <div class="subheading">Information on graduate programs</div><br>
+
+        <ul>
+            <li>Information on the Masters program in Computer Science.</li>
+            <li>Information on the Ph.D. program in Computer Science.</li>
+        </ul>
+        <br>
+        <div class="subheading">Contact</div>
+        <br>
+        <div class="paragraph">
+            For general information, please contact Ann Jack.<br><br>
+            For the Master's Graduate Program Director, please contact Prof Muthucumaru Maheswaran.<br><br>
+            For the PhD Graduate Program Director, please contact Prof Hamed Hatami.
+        </div>
+        <br><br>
+    </div>
+
+    <div class="foot">
+        <p style="margin: 0;">All content related requests should be sent to webadmin@cs.mcgill.ca</p>
+        <p>© McGill University 2020 Credits</p>
+    </div>
+
+</body>
+
+</html>
