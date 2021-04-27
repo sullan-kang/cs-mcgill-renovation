@@ -3,6 +3,5 @@
 - Advanced web responsiveness and aesthetics to the current website (HTML, CSS, JS)
 - Interactive contents editor tool (jQuery, PHP, SQL)
 
-Note: DB build is not included in the repo.
-
-Demo Video Available on https://youtu.be/dGz2RCyHTkQ
+Note: DB build is not included in the repo, and the editor/news/people pages will not run properly as password for the DB was removed.
+However, demo video is available on https://youtu.be/dGz2RCyHTkQ.
