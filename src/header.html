@@ -1,0 +1,133 @@
+<html>
+
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <script>
+        function moveTo(str) {
+            location.replace(str)
+        }
+    </script>
+
+</head>
+
+<body>
+    <header>
+
+        <!------MCGILL LOGO------->
+        <div class="logo">
+            <img class="logo-img" src="../img/SoCS_McGill.png" onclick="moveTo('main.php')">
+        </div>
+
+        <!------NAVBAR------------>
+        <div class="topnav" id="myTopnav">
+
+            <!----about--->
+            <div class="dropdown">
+                <button class="dropdownbtn">About
+                    <!--<i class="fa fa-caret-down"></i>-->
+                </button>
+                <div class="dropdown-content">
+                    <a href="#">SOCS</a>
+                    <a href="#">Facilities</a>
+                    <a href="#">Contact</a>
+                    <a href="#" onclick="moveTo('editor.html')">Internal</a>
+                </div>
+            </div>
+
+            <!----prospective---->
+            <div class="dropdown">
+                <button class="dropdownbtn">Prospective
+
+                </button>
+                <div class="dropdown-content">
+                    <a href="#">General Info</a>
+                    <a href="#">Why CS?</a>
+                    <a href="#">CEGEP</a>
+                    <a href="#">Freshman</a>
+                    <a href="#">Choosing A Major</a>
+                    <a href="#">Transfer</a>
+                    <a href="#">Internship</a>
+                </div>
+            </div>
+
+            <!----academic---->
+            <div class="dropdown">
+                <button class="dropdownbtn" onclick="moveTo('undergradoverview.html')">Academic
+
+                </button>
+                <div class="dropdown-content">
+                    <a href="#" onclick="moveTo('undergradoverview.html')">Undergraduate</a>
+                    <a href="#" onclick="moveTo('gradoverview.html')">Graduate</a>
+                    <a href="#">Courses</a>
+
+                </div>
+            </div>
+
+            <!----research---->
+            <div class="dropdown">
+                <button class="dropdownbtn">Research
+
+                </button>
+                <div class="dropdown-content">
+                    <a href="#">Areas</a>
+                    <a href="#">Tech Reports</a>
+
+                </div>
+            </div>
+
+            <!----people---->
+            <div class="dropdown">
+                <button class="dropdownbtn" onclick="moveTo('people.php')">People
+
+                </button>
+                <div class="dropdown-content">
+                    <a href="#" onclick="moveTo('people.php')">Faculty</a>
+                    <a href="#">Staff</a>
+                    <a href="#">Community</a>
+                </div>
+            </div>
+
+            <!----news---->
+            <div class="dropdown">
+                <button class="dropdownbtn" onclick="moveTo('news.php')">News
+
+                </button>
+                <div class="dropdown-content">
+                    <a href="#" onclick="moveTo('news.php')">News</a>
+                    <a href="#">Events</a>
+                    <a href="#">Careers</a>
+                </div>
+            </div>
+
+            <!--search form-->
+            <form>
+                <input class="search" type="text" placeholder="Search..">
+                <button class="search-icon" type="submit"><i class="fa fa-search"></i></button>
+            </form>
+            <!--search icon-->
+            <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+        </div>
+
+    </header>
+
+
+    <!--script-->
+    <script>
+        // topnav responsive function
+        function myFunction() {
+            var x = document.getElementById("myTopnav");
+            if (x.className === "topnav") {
+                x.className += " responsive";
+            } else {
+                x.className = "topnav";
+            }
+        }
+    </script>
+
+</body>
+
+</html>
